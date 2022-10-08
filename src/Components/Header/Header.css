@@ -1,0 +1,14 @@
+header {
+  background-color: #008282;
+  padding: 20px 30px;
+  box-shadow: 0 1px 20px rgba(56, 40, 40, 0.3);
+}
+
+header p {
+  color: #fff;
+  float: right;
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
