@@ -26,7 +26,10 @@ export default function Panel(props) {
       <div className='panel_cards custom-scroll'>
         {props.panel?.cards?.map((item)=>{
           return <Card key={item.id} card={item}
-          removeCard = {props.removeCard} panelId={props.panel?.id}/>
+          removeCard = {props.removeCard} panelId={props.panel?.id}
+          dragEntered={props.dragEntered}
+          dragEnded={props.dragEnded}
+          />
         })}
         <Editable 
         displayClass="panels_cards_add"

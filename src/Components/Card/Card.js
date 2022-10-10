@@ -7,7 +7,9 @@ import { Clock, MoreHorizontal, CheckSquare, Check } from 'react-feather'
 export default function Card(props) {
   const [showDropdown, setShowDropdown] = useState(false);
   return (
-    <div className='card'>
+    <div className='card' draggable 
+    onDragEnd={() => props.dragEnded(props.panelId, props.card.id)}
+    onDragEnter={() => props.dragEntered(props.panelId, props.card.id)}>
       <div className='card_top'>
         <div className='card_top_labels'>
         {props.card?.labels?.map((item, index)=>{
