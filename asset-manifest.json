@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/excellence-kanban/static/css/main.913fd3ba.css",
+    "main.js": "/excellence-kanban/static/js/main.d35e6c38.js",
+    "static/js/787.d5f93f1f.chunk.js": "/excellence-kanban/static/js/787.d5f93f1f.chunk.js",
+    "index.html": "/excellence-kanban/index.html",
+    "main.913fd3ba.css.map": "/excellence-kanban/static/css/main.913fd3ba.css.map",
+    "main.d35e6c38.js.map": "/excellence-kanban/static/js/main.d35e6c38.js.map",
+    "787.d5f93f1f.chunk.js.map": "/excellence-kanban/static/js/787.d5f93f1f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.913fd3ba.css",
+    "static/js/main.d35e6c38.js"
+  ]
+}
