@@ -17,7 +17,7 @@ export default function Panel(props) {
           {showDropdown && (
               <Dropdown onClose={()=> setShowDropdown(false)}>
                 <div className='panel_dropdown'>
-                  <p>Delete Panel</p>
+                  <p onClick={()=> props.removePanel(props.panel?.id)}>Delete Panel</p>
                 </div>
               </Dropdown>
           )}

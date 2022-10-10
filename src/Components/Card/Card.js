@@ -29,9 +29,13 @@ export default function Card(props) {
         {props.card?.title}
       </div>
       <div className='card_footer'>
-        <p>
-          <Clock className='card_footer_icon' /> {props.card?.date}
-        </p>
+        {
+          props.card?.date && (
+            <p>
+              <Clock className='card_footer_icon' /> {props.card?.date}
+            </p>
+          )
+        }
         <p>
           <CheckSquare className='card_footer_icon' />
           1/4

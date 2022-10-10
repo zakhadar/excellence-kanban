@@ -71,6 +71,50 @@ function App() {
       ]
     }
   ]);
+
+  const addCard = (title, pid) => {
+    const card = {
+      id: Date.now() + Math.random()*2,
+      title,
+      labels: [],
+      tasks: [],
+      date: "",
+      desc: ""
+    }
+    const index = boards.findIndex((item) => item.id === pid);
+    if (index < 0) return;
+    const tempPanel = [...boards];
+    tempPanel[index].cards.push(card);
+    setBoards(tempPanel);
+  }
+
+  const removeCard = (cid,pid) => {
+    const pIndex = boards.findIndex((item) => item.id === pid);
+    if (pIndex < 0) return;
+
+    const cIndex = boards[pIndex].findIndex((item) => item.id === cid);
+    if (pIndex < 0) return;
+
+    const tempPanel = [...boards];
+    tempPanel[pIndex].cards.splice(cIndex,1);
+    setBoards(tempPanel);
+  }
+
+  const addPanel = (title) => {
+     setBoards([...boards,
+      {
+        id: Date.now() + Math.random,
+        title,
+        cards: []
+      }
+    ]);
+  }
+
+  const removePanel = (pid) => {
+    const tempPanels = boards.filter(item=>item.id!==pid);
+    setBoards(tempPanels);
+  }
+
   return (
     <div className="app">
       <Header />
@@ -80,12 +124,14 @@ function App() {
             boards.map((item)=><Panel
             key={item.id}
             panel={item}
+            removePanel = {removePanel}
             />)
           }
           <div className='addPanel'>
             <Editable
             text="Add Panel"
-            placeholder="Enter Panel Title" />
+            placeholder="Enter Panel Title"
+            onSubmit = {(value)=> addPanel(value)} />
           </div>
         </div>        
       </div>
