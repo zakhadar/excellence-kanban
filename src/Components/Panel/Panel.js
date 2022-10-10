@@ -1,18 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Panel.css';
 import Card from '../Card/Card';
 import Editable from '../Editable/Editable';
 import { MoreHorizontal } from 'react-feather'
+import Dropdown from '../Dropdown/Dropdown';
 
-const panel = () => {
+export default function Panel(props) {
+  const [showDropdown, setShowDropdown] = useState(false);
+
   return (
     <div className='panel'>
       <div className='panel_header'>
-        <p className='panel_header_title'>To Do <span>2</span></p>
-        <MoreHorizontal className='panel_header_title_more' />
+        <p className='panel_header_title'>{props.panel?.title} <span>{props.panel?.cards?.lenght}</span></p>
+        <div className='panel_top_more' onClick={()=> setShowDropdown(true)}>
+          <MoreHorizontal />
+          {showDropdown && (
+              <Dropdown onClose={()=> setShowDropdown(false)}>
+                <div className='panel_dropdown'>
+                  <p>Delete Panel</p>
+                </div>
+              </Dropdown>
+          )}
+        </div>
       </div>
       <div className='panel_cards custom-scroll'>
-        <Card />
+        {props.panel?.cards?.map((item)=>{
+          return <Card key={item.id} card={item}/>
+        })}
         <Editable 
         displayClass="panels_cards_add"
         text="Add Card"
@@ -22,5 +36,3 @@ const panel = () => {
     </div>
   )
 }
-
-export default panel
