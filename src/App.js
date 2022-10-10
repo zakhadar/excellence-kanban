@@ -88,17 +88,19 @@ function App() {
     setBoards(tempPanel);
   }
 
-  const removeCard = (cid,pid) => {
-    const pIndex = boards.findIndex((item) => item.id === pid);
-    if (pIndex < 0) return;
+  const removeCard = (pid, cid) => {
+    const index = boards.findIndex((item) => item.id === pid);
+    if (index < 0) return;
 
-    const cIndex = boards[pIndex].findIndex((item) => item.id === cid);
-    if (pIndex < 0) return;
+    const tempBoards = [...boards];
+    const cards = tempBoards[index].cards;
 
-    const tempPanel = [...boards];
-    tempPanel[pIndex].cards.splice(cIndex,1);
-    setBoards(tempPanel);
-  }
+    const cardIndex = cards.findIndex((item) => item.id === cid);
+    if (cardIndex < 0) return;
+
+    cards.splice(cardIndex, 1);
+    setBoards(tempBoards);
+  };
 
   const addPanel = (title) => {
      setBoards([...boards,
@@ -125,6 +127,8 @@ function App() {
             key={item.id}
             panel={item}
             removePanel = {removePanel}
+            addCard = {addCard}
+            removeCard = {removeCard}
             />)
           }
           <div className='addPanel'>

@@ -25,12 +25,14 @@ export default function Panel(props) {
       </div>
       <div className='panel_cards custom-scroll'>
         {props.panel?.cards?.map((item)=>{
-          return <Card key={item.id} card={item}/>
+          return <Card key={item.id} card={item}
+          removeCard = {props.removeCard} panelId={props.panel?.id}/>
         })}
         <Editable 
         displayClass="panels_cards_add"
         text="Add Card"
         placeholder="Enter Card Title"
+        onSubmit = {(value)=>props.addCard(value, props.panel.id)}
         />
       </div>
     </div>

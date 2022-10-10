@@ -19,7 +19,9 @@ export default function Card(props) {
           {showDropdown && (
               <Dropdown onClose={()=> setShowDropdown(false)}>
                 <div className='card_dropdown'>
-                  <p>Delete Card</p>
+                  <p onClick={() => props.removeCard(props.panelId, props.card.id)}>
+                    Delete Card
+                  </p>
                 </div>
               </Dropdown>
           )}
